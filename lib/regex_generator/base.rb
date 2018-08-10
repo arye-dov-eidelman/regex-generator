@@ -1,0 +1,2 @@
+class RegexGenerator::Base
+end
