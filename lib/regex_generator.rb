@@ -3,4 +3,3 @@ require_relative "regex_generator/base"
 require_relative "regex_generator/cli"
 
 require 'pry'
-require 'open-uri'

@@ -21,10 +21,44 @@ class RegexGenerator::Base
   end
   
   def random_regex(length = randomizer.rand(1..max_length))
-    length.times.collect{random_char}.join
+
+    begin
+      Regexp.new(length.times.collect{random_char}.join)
+    rescue
+      random_regex(length)
+    end
+  end
+
+  def passes_tests(regex)
+    true_test_casses.all? { |test_case| test_case =~ regex} &&
+    false_test_casses.none? { |test_case| test_case =~ regex}
+  end
+
+  def solved?
+    !!final_result
+  end
+
+  def number_with_delimiter(number)
+    number.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
   end
 
   def generate
+    count = 0
+    time = Time.now
 
+    while !solved?
+      regex = random_regex
+      if passes_tests(regex)
+        final_result = regex
+        puts "Regex: \/#{regex}\/"
+        return "done"
+      else
+        # binding.pry
+        print "Regex: #{regex},#{' ' * (max_length + 16 - regex.to_s.length)}  "
+        print "try: #{number_with_delimiter(count += 1)},  "
+        puts  "Microseconds #{((Time.now - time)* 1_000_000.0).to_i}"
+        time = Time.now
+      end
+    end
   end
 end
