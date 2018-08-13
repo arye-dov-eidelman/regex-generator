@@ -1,5 +1,6 @@
 class RegexGenerator::Base
-  attr_accessor :true_test_casses, :false_test_casses, :top_results, :final_result, :allowed_regex_chars, :randomizer, :max_length
+  attr_accessor :true_test_casses, :false_test_casses, :allowed_regex_chars, :max_length
+  attr_reader :final_result, :randomizer #,  :top_results
 
 
   def initialize(setup_hash)

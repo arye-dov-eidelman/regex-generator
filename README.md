@@ -1,11 +1,9 @@
 # RegexGenerator
 
-[see what i'm working on now, at this trello page](https://trello.com/b/PQYP8nkc/cli-project)
-
 ## Installation
 
 ```bash
-git clone https://github.com/arye-dov-eidelman/regex_generator.git
+git clone https://github.com/arye-dov-eidelman/regex-generator.git
 bundle install
 ```
 
@@ -21,7 +19,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/arye-dov-eidelman/regex_generator](https://github.com/arye-dov-eidelman/regex_generator). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/arye-dov-eidelman/regex-generator](https://github.com/arye-dov-eidelman/regex-generator). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -29,4 +27,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the RegexGenerator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/arye-dov-eidelman/regex_generator/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the RegexGenerator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/arye-dov-eidelman/regex-generator/blob/master/CODE_OF_CONDUCT.md).
