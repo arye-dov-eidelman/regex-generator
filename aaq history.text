@@ -1,0 +1,96 @@
+Arye Dov Eidelman 12 MINUTES AGO
+how are class methods object oriented?
+
+aysan isayo 11 MINUTES AGO
+hey there Arye!
+Arye Dov Eidelman 11 MINUTES AGO
+Hey, Aysan.
+
+
+aysan isayo 11 MINUTES AGO
+how are you
+
+aysan isayo 10 MINUTES AGO
+object orientation occurs through setting up relationship macros
+
+aysan isayo 10 MINUTES AGO
+oh wait, im sorry
+
+aysan isayo 10 MINUTES AGO
+i thought you meant class models
+Arye Dov Eidelman 9 MINUTES AGO
+I getting the feeling that class methods and instance methods should have a different class name
+
+Arye Dov Eidelman 9 MINUTES AGO
+like test and tester
+
+Arye Dov Eidelman 9 MINUTES AGO
+they are modeling 2 different things
+
+
+aysan isayo 8 MINUTES AGO
+class methods are defined as self.method
+
+aysan isayo 8 MINUTES AGO
+so it helps identify that it is a class method
+Arye Dov Eidelman 7 MINUTES AGO
+if the test and the testing happen in the same class how should I choose a name for the class
+
+
+aysan isayo 6 MINUTES AGO
+hmm, not sure what you mean
+
+aysan isayo 6 MINUTES AGO
+any examples to provide?
+Arye Dov Eidelman 6 MINUTES AGO
+class RegexGenerator::Test
+  attr_accessor :test
+  
+  def initialize(test = nil, should_match = true)
+    self.test = test
+    self.should_match = should_match
+  end
+  
+  def should_match?
+    @should_match
+  end
+
+  def should_match=(bool)
+    @should_match = !!bool
+  end
+
+  def passes?(regex)
+    # why is '!!' necessary
+    !!test.match(regex) == should_match?
+  end
+
+  def self.passes_all?(tests, regex)
+    tests.all? {|test| test.passes?(regex)}
+  end
+end
+
+
+aysan isayo 4 MINUTES AGO
+is this from the validations with form tag lab?
+Arye Dov Eidelman 4 MINUTES AGO
+no
+
+
+aysan isayo 3 MINUTES AGO
+ok, what lab is it?
+Arye Dov Eidelman 2 MINUTES AGO
+It's not a lab, just something I got sidetracked on.
+
+
+aysan isayo 2 MINUTES AGO
+got it. unfortunately not sure we would have the answer to that here since we dont know the entire context of it
+Arye Dov Eidelman A MINUTE AGO
+Where should I ask?
+
+
+aysan isayo A MINUTE AGO
+slack would be a great place for this :smile:
+Arye Dov Eidelman A FEW SECONDS AGO
+ok I'll give it a try
+
+~~ This question has been resolved ~~

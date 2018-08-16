@@ -1,11 +1,11 @@
 class RegexGenerator::Test
   attr_accessor :test
-  
+
   def initialize(test = nil, should_match = true)
     self.test = test
     self.should_match = should_match
   end
-  
+
   def should_match?
     @should_match
   end
@@ -18,9 +18,8 @@ class RegexGenerator::Test
     # why is '!!' necessary
     !!test.match(regex) == should_match?
   end
+
+  def self.passes_all?(tests, regex)
+    tests.all? {|test| test.passes?(regex)}
+  end
 end
-
-# examples should return true
-
-# RegexGenerator::Test.new('a').passes?(/a/)
-# RegexGenerator::Test.new('a', false).passes?(/b/)

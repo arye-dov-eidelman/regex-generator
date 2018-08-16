@@ -1,26 +1,21 @@
 class RegexGenerator::Score
-  attr_accessor :regex
 
-  def initialize(regex)
-    regex = regex
+  def initialize(solution)
+    @solution = solution
   end
 
   def overall
-    speed / 2 + specificity / 3 + readabilty / 6
+    speed * 100_000 + length
   end
 
   def speed
-    # benchmark speed for which examples?
-    #   only the passing ones
-    #   also the failing ones
-    #   or add some random examples as well
+    starting_time = Time.now
+    RegexGenerator::Test.passes_all?(@solution.tests, @solution.regex)
+    total_time = Time.now - starting_time
+    speed = total_time / @solution.tests.length
   end
 
-  def specificity
-    # lose ponts for litteral charactors get points for ranges
-  end
-
-  def readabilty
-    # how in the world is readability defined is it that it's shorter?
+  def length
+    @solution.length
   end
 end
