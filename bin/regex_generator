@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
+# require "bundler/setup"
 require_relative "../lib/regex_generator"
 
-RegexGenerator::CLI.new
+# RegexGenerator::CLI.new

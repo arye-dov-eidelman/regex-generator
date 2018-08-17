@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require_relative "./lib/regex_generator/version"
+require_relative "./lib/regex_generator"
 
 Gem::Specification.new do |spec|
   spec.name          = "regex-generator"
