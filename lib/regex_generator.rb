@@ -25,15 +25,18 @@ module RegexGenerator
     attr_reader :solution
   end
 
-  def self.run
-    generate_solution
+  def self.log_solution(solution)
     puts <<~OUTPUT
+    Regex:         /#{solution.regex.source}/
+    Valid builds:  #{build_count.to_s}
+    Failed builds: #{failed_build_count.to_s}
+    Overall score: #{solution.score.overall}
 
-    Regex:         /#{@solution.regex.source}/
-    Valid builds:  #{@build_count.to_s}
-    Failed builds: #{@failed_build_count.to_s}
-    Overall score: #{@solution.score.overall}
     OUTPUT
+  end
+
+  def self.run
+    log_solution(generate_solution)
     @solution
   end
 
@@ -65,27 +68,22 @@ module RegexGenerator
   end
 
   def self.better_solution?(original, newer)
-    !(original.score.overall >= newer.score.overall ||
-      original.regex == newer.regex)
+    original.score.overall < newer.score.overall && original.regex.source != newer.regex.source
   end
 
   def self.optimize(seconds)
-    strating_time = Time.now
-
     original_solution = @solution
-    new_solution = self.run
+    new_solution = generate_solution
 
-    while !better_solution?(original_solution, new_solution)
-      new_solution = self.run
-      if Time.now.to_f > (strating_time.to_f + seconds)
-        binding.pry
-        puts "couldn't fint a better sulotion in #{seconds} seconds"
-        exit
-      end
+    run_for_x_amount_of_time(seconds) do
+      new_solution = generate_solution
     end
-
-    puts "Best solution so far: #{best_sulotion.regex}"
-    puts "Increased score by: #{original_solution.score.overall - best_sulotion.score.overall}"
+    if better_solution?(original_solution, best_sulotion)
+      puts "Better solution found, that Increases the score by: #{original_solution.score.overall - best_sulotion.score.overall}"
+      log_solution(best_sulotion)
+    else
+      puts "we couldnt find a better solution 😟"
+    end
   end
 
   def self.rand_string(min_length, max_length)
@@ -115,4 +113,12 @@ module RegexGenerator
       Test.new(test[0], test[1])
     end
   end
+
+  def self.run_for_x_amount_of_time(seconds)
+    strating_time = Time.now
+    if Time.now.to_f < (strating_time.to_f + seconds)
+      yield
+    end
+  end
+
 end
